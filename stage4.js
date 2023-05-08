@@ -12,7 +12,7 @@ setInterval( () => {
 
 //investment + buy ads + clipper + megaclipper
 setInterval( () => {
-    if (bankroll < adCost && bankroll < clipperCost && wire < clipRate * 60 && 0==1){
+    if (bankroll < adCost && bankroll < megaClipperCost && wire < clipRate * 60 && megaClipperCost * 2 < adCost){
         investDeposit()
     }
     else{
@@ -35,7 +35,7 @@ setInterval( () => {
     raisePrice()
     setTimeout(() => {
         zweitWert = avgRev
-        if (erstWert > zweitWert && margin > 0.01){
+        if (erstWert > zweitWert && margin > 0.02){
             lowerPrice()
             lowerPrice()
             console.log(`lowered price 1`);
@@ -121,8 +121,13 @@ setInterval(() =>{
 //tournament + yomi
 setInterval(() => {
     if (tourneyInProg == 0 && operations > tourneyCost && 0==1){
-      newTourney()
-      stratPickerElement.value = 7
+        newTourney()
+         if (strats.length < 8){
+            stratPickerElement.value = 0
+         }
+         else{
+            stratPickerElement.value = 7
+         }
       runTourney()
     }
 
