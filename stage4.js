@@ -12,7 +12,7 @@ setInterval( () => {
 
 //investment + buy ads + clipper + megaclipper
 setInterval( () => {
-    if (bankroll < adCost && bankroll < megaClipperCost && wire < clipRate * 60 && megaClipperCost * 2 < adCost){
+    if (bankroll < adCost && bankroll < megaClipperCost && wire < clipRate * 60){
         investDeposit()
     }
     else{
@@ -78,7 +78,7 @@ setInterval(() =>{
     const prodRate = Number(powerProductionRate.textContent.replace(`,`,``))
     const storageMax = Number(maxStorageElement.textContent.replace(`,`,``))
 
-    if (prodRate < consRate + 500){
+    if (prodRate < consRate + 150){
         if (farmCost < unusedClips){
             makeFarm(1)
         }
@@ -123,7 +123,7 @@ setInterval(() => {
     if (tourneyInProg == 0 && operations > tourneyCost){
         newTourney()
          if (strats.length < 8){
-            stratPickerElement.value = 0
+            stratPickerElement.value = 3
          }
          else{
             stratPickerElement.value = 7
@@ -169,11 +169,6 @@ setInterval(() =>{
 // buy memory and processors
 setInterval(() =>{
     if(trust > memory + processors){
-        if(memory / 5 > processors){
-            addProc()
-        }
-        else {
-            addMem()
-        }
+        addProc()
     }
 }, 1000)
